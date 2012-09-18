@@ -12,7 +12,7 @@
  * 
  */
 
-void threadimp(){
+void impair(){
     int i=1;
     for(i=1;i<20;i=i+2)
     {
@@ -23,7 +23,7 @@ void threadimp(){
     
 }
 
-void threadpai(){
+void pair(){
     int j=0;
     for(j=0;j<20;j=j+2)
     {
@@ -37,7 +37,7 @@ void threadpai(){
 int main(int argc, char** argv) {
     
 
-    pthread_create(&threadimp(),NULL,&threadpai(),NULL);
+    pthread_create(&impair(),NULL,&pair(),NULL);
     pthread_exit(0);
     return (EXIT_SUCCESS);
 }
