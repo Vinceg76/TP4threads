@@ -34,6 +34,12 @@
         <compilerSet>default</compilerSet>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandLine>-pthread -D_REENTRANT</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>-pthread -D_REENTRANT</commandLine>
+        </ccTool>
       </compileType>
     </conf>
     <conf name="Release" type="1">

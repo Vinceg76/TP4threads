@@ -39,11 +39,11 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-pthread -D_REENTRANT
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-pthread -D_REENTRANT
+CXXFLAGS=-pthread -D_REENTRANT
 
 # Fortran Compiler Flags
 FFLAGS=
