@@ -8,13 +8,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 int i;
+pthread_mutex_t mutex;
 
 /*
  * 
  */
 
 void impair() {
-    while (i <= 1000000000) {
+
+    while (1) {
         if (i % 2 == 1) {
             printf("%d \n", i);
 
@@ -28,13 +30,23 @@ void impair() {
 }
 
 void pair() {
-    while (i <= 1000000000) {
-        if (i % 2 == 0) {
-            printf("%d \n", i);
+    int j;
+    while (1) {
+        pthread_mutex_lock(&mutex);
+        for (j = 0; j < 20; j++) {
+            if (i % 2 == 0) {
+                printf("%d \n", i);
 
+            }
+            else
+            {
+                usleep(1);
+            }
+            usleep(1);
         }
-        usleep(1);
     }
+    pthread_mutex_unlock(&mutex);
+    usleep(1);
     pthread_exit(NULL);
 
 }
@@ -49,7 +61,7 @@ int main(int argc, char** argv) {
     pthread_create(&thpair, NULL, (void*) pair, NULL);
     pthread_create(&thimpair, NULL, (void*) impair, NULL);
     // printf("%d \n",i);
-    for (i = 1; i <= 1000000000; i++) {
+    for (i = 1; i <= 10000; i++) {
         usleep(1);
     }
 
