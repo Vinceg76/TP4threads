@@ -14,7 +14,7 @@ int i;
  */
 
 void impair() {
-    while (i < 1000) {
+    while (i <= 1000000000) {
         if (i % 2 == 1) {
             printf("%d \n", i);
 
@@ -28,7 +28,7 @@ void impair() {
 }
 
 void pair() {
-    while (i <= 1000) {
+    while (i <= 1000000000) {
         if (i % 2 == 0) {
             printf("%d \n", i);
 
@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
     pthread_create(&thpair, NULL, (void*) pair, NULL);
     pthread_create(&thimpair, NULL, (void*) impair, NULL);
     // printf("%d \n",i);
-    for (i = 1; i < 1000; i++) {
+    for (i = 1; i <= 1000000000; i++) {
         usleep(1);
     }
 
