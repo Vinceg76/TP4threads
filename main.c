@@ -15,12 +15,19 @@ pthread_mutex_t mutex;
  */
 
 void impair() {
+    int j;
 
     while (1) {
-        if (i % 2 == 1) {
-            printf("%d \n", i);
-
+        pthread_mutex_lock(&mutex);
+        for (j = 0; j < 20; j++) {
+            if (i % 2 == 1) {
+                printf("%d \n", i);
+            } else {
+                usleep(1);
+            }
+            usleep(1);
         }
+        pthread_mutex_unlock(&mutex);
         usleep(1);
     }
     pthread_exit(NULL);
@@ -37,16 +44,15 @@ void pair() {
             if (i % 2 == 0) {
                 printf("%d \n", i);
 
-            }
-            else
-            {
+            } else {
                 usleep(1);
             }
             usleep(1);
         }
+        pthread_mutex_unlock(&mutex);
+        usleep(1);
     }
-    pthread_mutex_unlock(&mutex);
-    usleep(1);
+
     pthread_exit(NULL);
 
 }
